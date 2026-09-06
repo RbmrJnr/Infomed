@@ -1,774 +1,394 @@
-
-/** testes */
-
-const medicines = [
-
-    {
-        name: "DIPIRONA 500 mg",
-        details: "Comprimido"
-    },
-
-    {
-        name: "DIPIRONA 1 g",
-        details: "Comprimido"
-    },
-
-    {
-        name: "DIPIRONA GOTAS",
-        details: "Solução oral"
-    },
-
-    {
-        name: "PARACETAMOL 500 mg",
-        details: "Comprimido"
-    },
-
-    {
-        name: "IBUPROFENO 600 mg",
-        details: "Comprimido"
-    },
-
-    {
-        name: "AMOXICILINA 500 mg",
-        details: "Cápsula"
-    }
-
-];
-
 /* =========================
-   TELAS
+   DADOS DA BUSCA
    ========================= */
 
-const homeScreen =
-    document.getElementById("homeScreen");
+let medicines = [];
+let selectedMedicine = null;
 
-const medicineScreen =
-    document.getElementById("medicineScreen");
+/* =========================
+   TELAS E ESTADO
+   ========================= */
+
+const homeScreen = document.getElementById("homeScreen");
+const medicineScreen = document.getElementById("medicineScreen");
+const informationScreen = document.getElementById("informationScreen");
+const errorScreen = document.getElementById("errorScreen");
+const searchScreen = document.getElementById("searchScreen");
+const selectionScreen = document.getElementById("selectionScreen");
+const informationChoiceScreen = document.getElementById("informationChoiceScreen");
 
 let telaAnteriorInformacao = medicineScreen;
 
-const informationScreen =
-    document.getElementById("informationScreen");
-
-const errorScreen =
-    document.getElementById("errorScreen");
-
-const searchScreen =
-    document.getElementById("searchScreen");
-
-const selectionScreen =
-    document.getElementById("selectionScreen");
-
-const informationChoiceScreen =
-    document.getElementById("informationChoiceScreen");
-
-
 /* =========================
-   BOTÕES DA TELA INICIAL
+   ELEMENTOS DA TELA INICIAL
    ========================= */
 
-const manualSearchButton =
-    document.getElementById("manualSearchButton");
-
+const manualSearchButton = document.getElementById("manualSearchButton");
 
 /* =========================
-   BOTÕES DA TELA DO MEDICAMENTO
+   ELEMENTOS DA BUSCA MANUAL
    ========================= */
 
-const backButton =
-    document.getElementById("backButton");
-
-const homeButton =
-    document.getElementById("homeButton");
-
-const newSearchButton =
-    document.getElementById("newSearchButton");
-
+const searchBackButton = document.getElementById("searchBackButton");
+const searchHomeButton = document.getElementById("searchHomeButton");
+const medicineSearchInput = document.getElementById("medicineSearchInput");
+const clearSearchButton = document.getElementById("clearSearchButton");
+const continueSearchButton = document.getElementById("continueSearchButton");
 
 /* =========================
-   BOTÕES DA TELA DE INFORMAÇÃO
+   ELEMENTOS DA SELEÇÃO
    ========================= */
 
-const informationBackButton =
-    document.getElementById("informationBackButton");
-
-const informationHomeButton =
-    document.getElementById("informationHomeButton");
-
-const backToInformationButton =
-    document.getElementById("backToInformationButton");
+const selectionBackButton = document.getElementById("selectionBackButton");
+const selectionHomeButton = document.getElementById("selectionHomeButton");
+const selectionBackSearchButton = document.getElementById("selectionBackSearchButton");
+const medicineResults = document.getElementById("medicineResults");
+const noResultsBackButton = document.getElementById("noResultsBackButton");
 
 /* =========================
-   BOTÕES DA TELA DE SELEÇÃO
+   ELEMENTOS DAS INFORMAÇÕES
    ========================= */
 
-const selectionBackButton =
-    document.getElementById("selectionBackButton");
+const informationChoiceBackButton = document.getElementById("informationChoiceBackButton");
+const informationChoiceHomeButton = document.getElementById("informationChoiceHomeButton");
+const informationChoiceBackSearchButton = document.getElementById("informationChoiceBackSearchButton");
+const informationChoiceButtons = document.querySelectorAll(".information-choice-button");
+const selectedMedicineName = document.getElementById("selectedMedicineName");
 
-const selectionHomeButton =
-    document.getElementById("selectionHomeButton");
-
-const selectionBackSearchButton =
-    document.getElementById("selectionBackSearchButton");
-
-const medicineResults =
-    document.getElementById("medicineResults");
+const informationBackButton = document.getElementById("informationBackButton");
+const informationHomeButton = document.getElementById("informationHomeButton");
+const backToInformationButton = document.getElementById("backToInformationButton");
+const informationButtons = document.querySelectorAll(".information-button");
+const informationTitle = document.getElementById("informationTitle");
+const informationText = document.getElementById("informationText");
 
 /* =========================
-   BOTÕES DA TELA DE INFORMAÇÕES
+   ELEMENTOS DA TELA DO MEDICAMENTO
    ========================= */
 
-const informationChoiceBackButton =
-    document.getElementById("informationChoiceBackButton");
-
-const informationChoiceHomeButton =
-    document.getElementById("informationChoiceHomeButton");
-
-const informationChoiceBackSearchButton =
-    document.getElementById("informationChoiceBackSearchButton");
-
-const selectedMedicineName =
-    document.getElementById("selectedMedicineName");
-
-const informationChoiceButtons =
-    document.querySelectorAll(".information-choice-button");
-
-informationChoiceButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        // Avisa que viemos da tela de escolha da busca manual
-        telaAnteriorInformacao = informationChoiceScreen; 
-
-        const type =
-            button.dataset.info;
-
-        console.log("Informação selecionada:", type);
-
-        showInformation(type);
-
-    });
-});
+const backButton = document.getElementById("backButton");
+const homeButton = document.getElementById("homeButton");
+const newSearchButton = document.getElementById("newSearchButton");
 
 /* =========================
-   BOTÕES DA TELA DE ERRO
+   ELEMENTOS DA TELA DE ERRO
    ========================= */
 
-const errorBackButton =
-    document.getElementById("errorBackButton");
-
-const errorHomeButton =
-    document.getElementById("errorHomeButton");
-
-const retryButton =
-    document.getElementById("retryButton");
-
-const errorManualSearchButton =
-    document.getElementById("errorManualSearchButton");
-
+const errorBackButton = document.getElementById("errorBackButton");
+const errorHomeButton = document.getElementById("errorHomeButton");
+const retryButton = document.getElementById("retryButton");
+const errorManualSearchButton = document.getElementById("errorManualSearchButton");
 
 /* =========================
-   BUSCA MANUAL
-   ========================= */
-
-const searchBackButton =
-    document.getElementById("searchBackButton");
-
-const searchHomeButton =
-    document.getElementById("searchHomeButton");
-
-const medicineSearchInput =
-    document.getElementById("medicineSearchInput");
-
-const clearSearchButton =
-    document.getElementById("clearSearchButton");
-
-const continueSearchButton =
-    document.getElementById("continueSearchButton");
-
-
-/* =========================
-   ELEMENTOS DA INFORMAÇÃO
-   ========================= */
-
-const informationTitle =
-    document.getElementById("informationTitle");
-
-const informationText =
-    document.getElementById("informationText");
-
-    
-
-
-/* =========================
-   MOSTRAR TELA
+   NAVEGAÇÃO ENTRE TELAS
    ========================= */
 
 function showScreen(screen) {
-
     homeScreen.classList.remove("active");
-
     medicineScreen.classList.remove("active");
-
     informationScreen.classList.remove("active");
-
     errorScreen.classList.remove("active");
-
     searchScreen.classList.remove("active");
-
     selectionScreen.classList.remove("active");
-
     informationChoiceScreen.classList.remove("active");
 
     screen.classList.add("active");
 }
 
-
-/* =========================
-   VOLTAR PARA INÍCIO
-   ========================= */
-
 function goHome() {
-
     showScreen(homeScreen);
-
 }
-
-
-/* =========================
-   MOSTRAR MEDICAMENTO
-   ========================= */
 
 function showMedicine() {
-
     showScreen(medicineScreen);
-
 }
 
+function showError() {
+    showScreen(errorScreen);
+}
 
 /* =========================
-   MOSTRAR INFORMAÇÃO
+   INFORMAÇÕES DO MEDICAMENTO
    ========================= */
 
 function showInformation(type) {
+    if (!selectedMedicine) {
+        return;
+    }
 
     const information = {
-
-        "composicao": {
+        composicao: {
             title: "COMPOSIÇÃO",
-
-            text:
-                "Nesta área serão apresentadas as informações " +
-                "sobre a composição do medicamento, conforme " +
-                "as informações cadastradas na base de dados."
+            text: selectedMedicine.composicao
         },
-
-
         "como-tomar": {
             title: "COMO TOMAR",
-
-            text:
-                "Nesta área serão apresentadas as informações " +
-                "sobre o modo de uso do medicamento, conforme " +
-                "as informações cadastradas na base de dados."
+            text: selectedMedicine.como_tomar
         },
-
-
-        "contraindicacoes": {
+        contraindicacoes: {
             title: "CONTRAINDICAÇÕES",
-
-            text:
-                "Nesta área serão apresentadas as informações " +
-                "sobre contraindicações e advertências, conforme " +
-                "as informações cadastradas na base de dados."
+            text: selectedMedicine.contraindicacoes
         },
-
-
-        "outras": {
+        outras: {
             title: "OUTRAS INFORMAÇÕES",
-
-            text:
-                "Nesta área serão apresentadas outras informações " +
-                "relevantes presentes na bula do medicamento."
+            text: selectedMedicine.outras_informacoes
         }
-
     };
 
-
-    const selectedInformation =
-        information[type];
-
+    const selectedInformation = information[type];
 
     if (!selectedInformation) {
         return;
     }
 
-
-    informationTitle.textContent =
-        selectedInformation.title;
-
-
-    informationText.textContent =
-        selectedInformation.text;
-
+    informationTitle.textContent = selectedInformation.title;
+    informationText.textContent = selectedInformation.text;
 
     showScreen(informationScreen);
-
 }
 
-
 /* =========================
-   BUSCA MANUAL
+   BUSCA E RESULTADOS
    ========================= */
 
 function showSearch() {
-
     medicineSearchInput.value = "";
-
     continueSearchButton.disabled = true;
 
     showScreen(searchScreen);
 
-    /*
-     * Coloca o cursor automaticamente
-     * no campo de busca.
-     */
-
     setTimeout(() => {
-
         medicineSearchInput.focus();
-
     }, 100);
-
 }
-
-
-/* =========================
-   ATUALIZAR BOTÃO CONTINUAR
-   ========================= */
 
 function updateContinueButton() {
+    const hasText = medicineSearchInput.value.trim().length > 0;
 
-    const hasText =
-        medicineSearchInput.value.trim().length > 0;
-
-    continueSearchButton.disabled =
-        !hasText;
-
+    continueSearchButton.disabled = !hasText;
 }
 
+async function showSelection(searchTerm = "") {
+    const noResults = document.getElementById("noResults");
+
+    noResults.classList.remove("active");
+    medicineResults.innerHTML = "";
+
+    try {
+        const response = await fetch(
+            `/api/medicamentos?busca=${encodeURIComponent(searchTerm)}`
+        );
+
+        if (!response.ok) {
+            throw new Error("Não foi possível buscar os medicamentos.");
+        }
+
+        medicines = await response.json();
+    } catch (error) {
+        console.error(error);
+        showError();
+        return;
+    }
+
+    if (medicines.length === 0) {
+        showNoResults();
+        return;
+    }
+
+    medicines.forEach((medicine, index) => {
+        const button = document.createElement("button");
+        const information = document.createElement("div");
+        const name = document.createElement("div");
+        const details = document.createElement("div");
+        const arrow = document.createElement("div");
+
+        button.className = "medicine-result";
+        name.className = "medicine-result-name";
+        details.className = "medicine-result-details";
+        arrow.className = "medicine-result-arrow";
+
+        name.textContent = medicine.nome;
+        details.textContent = medicine.apresentacao;
+        arrow.textContent = "→";
+
+        information.appendChild(name);
+        information.appendChild(details);
+        button.appendChild(information);
+        button.appendChild(arrow);
+
+        button.addEventListener("click", () => {
+            selectMedicine(index);
+        });
+
+        medicineResults.appendChild(button);
+    });
+
+    showScreen(selectionScreen);
+}
+
+function showNoResults() {
+    medicineResults.innerHTML = "";
+
+    const noResults = document.getElementById("noResults");
+    noResults.classList.add("active");
+
+    showScreen(selectionScreen);
+}
+
+function selectMedicine(index) {
+    selectedMedicine = medicines[index];
+
+    selectedMedicineName.textContent = selectedMedicine.nome;
+
+    showScreen(informationChoiceScreen);
+}
 
 /* =========================
-   BOTÃO BUSCAR MEDICAMENTO
+   EVENTOS: TELA INICIAL
    ========================= */
 
 manualSearchButton.addEventListener("click", () => {
-
     showSearch();
-
 });
 
-
 /* =========================
-   VOLTAR DA BUSCA
+   EVENTOS: BUSCA MANUAL
    ========================= */
 
 searchBackButton.addEventListener("click", () => {
-
     goHome();
-
 });
-
-
-/* =========================
-   HOME DA BUSCA
-   ========================= */
 
 searchHomeButton.addEventListener("click", () => {
-
     goHome();
-
 });
-
-
-/* =========================
-   DIGITAÇÃO
-   ========================= */
 
 medicineSearchInput.addEventListener("input", () => {
-
     updateContinueButton();
-
 });
-
-
-/* =========================
-   LIMPAR BUSCA
-   ========================= */
 
 clearSearchButton.addEventListener("click", () => {
-
     medicineSearchInput.value = "";
-
     updateContinueButton();
-
     medicineSearchInput.focus();
-
 });
 
-
-/* =========================
-   CONTINUAR BUSCA
-   ========================= */
-
-continueSearchButton.addEventListener("click", () => {
-
-    const medicineName =
-        medicineSearchInput.value.trim();
+continueSearchButton.addEventListener("click", async () => {
+    const medicineName = medicineSearchInput.value.trim();
 
     if (!medicineName) {
         return;
     }
 
     showSelection(medicineName);
-
 });
 
 /* =========================
-   VOLTAR DA TELA DO MEDICAMENTO
-   ========================= */
-
-backButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   HOME
-   ========================= */
-
-homeButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   NOVA CONSULTA
-   ========================= */
-
-newSearchButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   BOTÕES DE INFORMAÇÃO
-   ========================= */
-
-const informationButtons =
-    document.querySelectorAll(".information-button");
-
-
-informationButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const type =
-            button.dataset.info;
-
-        showInformation(type);
-
-    });
-
-});
-
-
-/* =========================
-   VOLTAR DA INFORMAÇÃO
-   ========================= */
-
-informationBackButton.addEventListener("click", () => {
-
-    showScreen(telaAnteriorInformacao);
-
-});
-
-
-/* =========================
-   HOME DA INFORMAÇÃO
-   ========================= */
-
-informationHomeButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   VOLTAR PARA O MENU
-   ========================= */
-
-backToInformationButton.addEventListener("click", () => {
-
-    showScreen(telaAnteriorInformacao);
-
-});
-
-
-/* =========================
-   TELA DE ERRO
-   ========================= */
-
-function showError() {
-
-    showScreen(errorScreen);
-
-}
-
-
-/* =========================
-   VOLTAR DA TELA DE ERRO
-   ========================= */
-
-errorBackButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   HOME DA TELA DE ERRO
-   ========================= */
-
-errorHomeButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   TENTAR NOVAMENTE
-   ========================= */
-
-retryButton.addEventListener("click", () => {
-
-    goHome();
-
-});
-
-
-/* =========================
-   BUSCA MANUAL PELO ERRO
-   ========================= */
-
-errorManualSearchButton.addEventListener("click", () => {
-
-    showSearch();
-
-});
-
-/* =========================
-   BOTÕES DE SELEÇÕES
+   EVENTOS: SELEÇÃO
    ========================= */
 
 selectionBackButton.addEventListener("click", () => {
-
     showSearch();
-
 });
-
 
 selectionHomeButton.addEventListener("click", () => {
-
     goHome();
-
 });
 
-
 if (selectionBackSearchButton) {
-
     selectionBackSearchButton.addEventListener("click", () => {
-
         showSearch();
-
     });
-
 }
 
+noResultsBackButton.addEventListener("click", () => {
+    showSearch();
+});
 
 /* =========================
-   BOTÕES DE NAVEGAÇÃO
+   EVENTOS: TELA DE INFORMAÇÕES
    ========================= */
 
 informationChoiceBackButton.addEventListener("click", () => {
-
     showSelection(medicineSearchInput.value);
-
 });
 
-
 informationChoiceHomeButton.addEventListener("click", () => {
-
     goHome();
-
 });
 
 informationChoiceBackSearchButton.addEventListener("click", () => {
-
     showSearch();
-
 });
 
-const noResultsBackButton =
-    document.getElementById("noResultsBackButton");
+informationChoiceButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        // Avisa que viemos da tela de escolha da busca manual.
+        telaAnteriorInformacao = informationChoiceScreen;
 
-noResultsBackButton.addEventListener("click", () => {
+        const type = button.dataset.info;
 
-    showSearch();
-
+        console.log("Informação selecionada:", type);
+        showInformation(type);
+    });
 });
-   
 
 /* =========================
-   MOSTRAR RESULTADOS DA SELEÇÃO
+   EVENTOS: DETALHES DO MEDICAMENTO
    ========================= */
 
-function showSelection(searchTerm = "") {
+backButton.addEventListener("click", () => {
+    goHome();
+});
 
-    const noResults =
-        document.getElementById("noResults");
+homeButton.addEventListener("click", () => {
+    goHome();
+});
 
-    noResults.classList.remove("active");
+newSearchButton.addEventListener("click", () => {
+    goHome();
+});
 
-    medicineResults.innerHTML = "";
+informationButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const type = button.dataset.info;
 
-
-    const normalizedSearch =
-        searchTerm
-            .trim()
-            .toLowerCase();
-
-
-    const results =
-        medicines.filter(medicine => {
-
-            return medicine.name
-                .toLowerCase()
-                .includes(normalizedSearch);
-
-        });
-
-
-    if (results.length === 0) {
-
-        showNoResults();
-
-        return;
-
-    }
-
-
-    results.forEach(medicine => {
-
-        const index =
-            medicines.indexOf(medicine);
-
-
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "medicine-result";
-
-
-        const information =
-            document.createElement("div");
-
-
-        const name =
-            document.createElement("div");
-
-        name.className =
-            "medicine-result-name";
-
-        name.textContent =
-            medicine.name;
-
-
-        const details =
-            document.createElement("div");
-
-        details.className =
-            "medicine-result-details";
-
-        details.textContent =
-            medicine.details;
-
-
-        information.appendChild(name);
-
-        information.appendChild(details);
-
-
-        const arrow =
-            document.createElement("div");
-
-        arrow.className =
-            "medicine-result-arrow";
-
-        arrow.textContent =
-            "→";
-
-
-        button.appendChild(information);
-
-        button.appendChild(arrow);
-
-
-        button.addEventListener("click", () => {
-
-            selectMedicine(index);
-
-        });
-
-
-        medicineResults.appendChild(button);
-
+        showInformation(type);
     });
+});
 
+/* =========================
+   EVENTOS: DETALHE DA INFORMAÇÃO
+   ========================= */
 
-    showScreen(selectionScreen);
+informationBackButton.addEventListener("click", () => {
+    showScreen(telaAnteriorInformacao);
+});
 
-}
+informationHomeButton.addEventListener("click", () => {
+    goHome();
+});
 
-function showNoResults() {
+backToInformationButton.addEventListener("click", () => {
+    showScreen(telaAnteriorInformacao);
+});
 
-    medicineResults.innerHTML = "";
+/* =========================
+   EVENTOS: TELA DE ERRO
+   ========================= */
 
-    const noResults =
-        document.getElementById("noResults");
+errorBackButton.addEventListener("click", () => {
+    goHome();
+});
 
-    noResults.classList.add("active");
+errorHomeButton.addEventListener("click", () => {
+    goHome();
+});
 
-    showScreen(selectionScreen);
+retryButton.addEventListener("click", () => {
+    goHome();
+});
 
-}
-
-function selectMedicine(index) {
-
-    const selectedMedicine = medicines[index];
-
-    selectedMedicineName.textContent =
-        selectedMedicine.name;
-
-    showScreen(informationChoiceScreen);
-}
+errorManualSearchButton.addEventListener("click", () => {
+    showSearch();
+});
