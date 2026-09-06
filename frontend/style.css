@@ -1,0 +1,1368 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+   ========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7f8;
+    color: #172126;
+}
+
+
+/* =========================
+   TELAS
+   ========================= */
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =========================
+   TELA INICIAL
+   ========================= */
+
+#homeScreen {
+    align-items: center;
+    padding: 40px 30px 25px;
+}
+
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.header p {
+    margin-top: 8px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+/* =========================
+   ÁREA DO SCANNER
+   ========================= */
+
+.scanner-area {
+    width: min(650px, 90vw);
+
+    padding: 55px 40px;
+
+    text-align: center;
+
+    background: white;
+
+    border: 3px solid #d8dee2;
+    border-radius: 24px;
+}
+
+.scanner-icon {
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 5px solid #172126;
+    border-radius: 20px;
+
+    font-size: 55px;
+}
+
+.scanner-area h2 {
+    font-size: 34px;
+    margin-bottom: 14px;
+}
+
+.scanner-area > p {
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+
+/* =========================
+   INDICADOR DO SCANNER
+   ========================= */
+
+.scanner-indicator {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 30px;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    background: #edf1f3;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.scanner-indicator span {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #2e9b57;
+}
+
+
+/* =========================
+   BUSCA MANUAL
+   ========================= */
+
+.manual-area {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.manual-area p {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.manual-button {
+    min-width: 320px;
+    min-height: 70px;
+
+    padding: 15px 30px;
+
+    border: 2px solid #172126;
+    border-radius: 14px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 23px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.manual-button:hover {
+    background: #edf1f3;
+}
+
+.manual-button:active {
+    transform: scale(0.97);
+}
+
+.button-icon {
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+
+/* =========================
+   TOPBAR
+   ========================= */
+
+.topbar {
+    width: 100%;
+
+    min-height: 80px;
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr 100px;
+
+    align-items: center;
+
+    padding: 10px 20px;
+
+    background: white;
+
+    border-bottom: 2px solid #d8dee2;
+}
+
+.topbar-title {
+    text-align: center;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.top-button {
+    width: 64px;
+    height: 64px;
+
+    border: 2px solid #172126;
+    border-radius: 14px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 34px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.top-button:hover {
+    background: #edf1f3;
+}
+
+.top-button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================
+   TELA DO MEDICAMENTO
+   ========================= */
+
+.medicine-content {
+    width: min(900px, 92vw);
+
+    margin: 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   NOME DO MEDICAMENTO
+   ========================= */
+
+.medicine-title {
+    margin-bottom: 35px;
+}
+
+.medicine-label {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.medicine-title h1 {
+    font-size: 46px;
+    font-weight: 700;
+}
+
+.medicine-title p:last-child {
+    margin-top: 8px;
+    font-size: 28px;
+}
+
+
+/* =========================
+   PERGUNTA
+   ========================= */
+
+.question {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   BOTÕES DE INFORMAÇÃO
+   ========================= */
+
+.information-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+.information-button {
+    min-height: 150px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    border: 3px solid #172126;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.information-button:hover {
+    background: #edf1f3;
+}
+
+.information-button:active {
+    transform: scale(0.97);
+}
+
+.information-icon {
+    font-size: 42px;
+}
+
+
+/* =========================
+   NOVA CONSULTA
+   ========================= */
+
+.new-search-button {
+    margin-top: 30px;
+
+    min-height: 65px;
+    min-width: 280px;
+
+    padding: 15px 30px;
+
+    border: 2px solid #172126;
+
+    border-radius: 14px;
+
+    background: #172126;
+
+    color: white;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        opacity 0.15s ease;
+}
+
+.new-search-button:hover {
+    opacity: 0.9;
+}
+
+.new-search-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   TELA DE INFORMAÇÃO
+   ========================= */
+
+.information-content {
+    width: min(900px, 92vw);
+
+    margin: 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+.information-content .medicine-label {
+    margin-bottom: 10px;
+}
+
+.information-content h1 {
+    font-size: 42px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   CARD DA INFORMAÇÃO
+   ========================= */
+
+.information-card {
+    width: 100%;
+
+    min-height: 300px;
+
+    padding: 40px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    text-align: left;
+
+    background: white;
+
+    border: 3px solid #d8dee2;
+
+    border-radius: 20px;
+}
+
+.information-card p {
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   VOLTAR DA INFORMAÇÃO
+   ========================= */
+
+.back-information-button {
+    margin-top: 30px;
+
+    min-height: 65px;
+
+    padding: 15px 30px;
+
+    border: 2px solid #172126;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.back-information-button:hover {
+    background: #edf1f3;
+}
+
+.back-information-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   RODAPÉ
+   ========================= */
+
+footer {
+    margin-top: auto;
+
+    padding: 20px 20px 25px;
+
+    text-align: center;
+
+    max-width: 800px;
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    #homeScreen {
+        padding: 25px 15px;
+    }
+
+    .header h1 {
+        font-size: 42px;
+    }
+
+    .header p {
+        font-size: 20px;
+    }
+
+    .scanner-area {
+        padding: 40px 20px;
+    }
+
+    .scanner-area h2 {
+        font-size: 28px;
+    }
+
+    .scanner-area > p {
+        font-size: 19px;
+    }
+
+    .manual-button {
+        width: 90vw;
+        min-width: unset;
+    }
+
+    .topbar {
+        grid-template-columns: 75px 1fr 75px;
+        padding: 8px 10px;
+    }
+
+    .top-button {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .topbar-title {
+        font-size: 23px;
+    }
+
+    .medicine-content {
+        padding: 30px 15px;
+    }
+
+    .medicine-title h1 {
+        font-size: 36px;
+    }
+
+    .medicine-title p:last-child {
+        font-size: 24px;
+    }
+
+    .question {
+        font-size: 24px;
+    }
+
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .information-button {
+        min-height: 120px;
+    }
+
+    .information-content {
+        padding: 30px 15px;
+    }
+
+    .information-content h1 {
+        font-size: 32px;
+    }
+
+    .information-card {
+        min-height: 250px;
+        padding: 25px;
+    }
+
+    .information-card p {
+        font-size: 20px;
+    }
+
+    .back-information-button {
+        width: 90vw;
+    }
+}
+
+/* =========================
+   TELA DE ERRO
+   ========================= */
+
+.error-content {
+    width: min(800px, 92vw);
+
+    margin: 0 auto;
+
+    padding: 55px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   ÍCONE DE ERRO
+   ========================= */
+
+.error-icon {
+    width: 110px;
+    height: 110px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 4px solid #172126;
+
+    border-radius: 50%;
+
+    font-size: 55px;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.error-content h1 {
+    font-size: 38px;
+
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   MENSAGENS
+   ========================= */
+
+.error-message {
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+.error-help {
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   AÇÕES
+   ========================= */
+
+.error-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.error-button {
+    width: min(500px, 90vw);
+
+    min-height: 70px;
+
+    padding: 15px 30px;
+
+    border: 3px solid #172126;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.error-button:hover {
+    background: #edf1f3;
+}
+
+.error-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   BOTÃO PRINCIPAL
+   ========================= */
+
+.error-button.primary {
+    background: #172126;
+
+    color: white;
+}
+
+.error-button.primary:hover {
+    background: #26343a;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .error-content {
+        padding: 35px 15px;
+    }
+
+    .error-icon {
+        width: 90px;
+        height: 90px;
+
+        font-size: 45px;
+    }
+
+    .error-content h1 {
+        font-size: 30px;
+    }
+
+    .error-message {
+        font-size: 21px;
+    }
+
+    .error-help {
+        font-size: 18px;
+    }
+
+    .error-button {
+        width: 90vw;
+
+        font-size: 20px;
+    }
+}
+
+/* =========================
+   BUSCA MANUAL
+   ========================= */
+
+.search-content {
+    width: min(900px, 94vw);
+
+    margin: 0 auto;
+
+    padding: 35px 20px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   INDICADOR DO WIZARD
+   ========================= */
+
+.wizard-step {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border-radius: 20px;
+
+    background: #edf1f3;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.search-content h1 {
+    font-size: 36px;
+
+    margin-bottom: 12px;
+}
+
+.search-description {
+    font-size: 21px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CAMPO DE BUSCA
+   ========================= */
+
+.search-input-area {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+#medicineSearchInput {
+    width: 100%;
+
+    height: 75px;
+
+    padding: 15px 65px 15px 25px;
+
+    border: 3px solid #172126;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    outline: none;
+}
+
+#medicineSearchInput::placeholder {
+    color: #7a858b;
+}
+
+.clear-search-button {
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #edf1f3;
+
+    color: #172126;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+.clear-search-button:hover {
+    background: #d8dee2;
+}
+
+/* =========================
+   CONTINUAR
+   ========================= */
+
+.continue-button {
+    width: min(450px, 90vw);
+
+    min-height: 70px;
+
+    margin-top: 22px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: #172126;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        opacity 0.15s ease;
+}
+
+.continue-button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.continue-button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   BOTÃO DESABILITADO
+   ========================= */
+
+.continue-button:disabled {
+    background: #c5cdd1;
+
+    color: #69757b;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .search-content {
+        padding: 25px 12px 15px;
+    }
+
+    .search-content h1 {
+        font-size: 28px;
+    }
+
+    .search-description {
+        font-size: 18px;
+    }
+
+    #medicineSearchInput {
+        height: 65px;
+
+        font-size: 23px;
+    }
+}
+
+/* =========================
+   SELEÇÃO DO MEDICAMENTO
+   ========================= */
+
+.selection-content {
+    width: min(900px, 94vw);
+
+    margin: 0 auto;
+
+    padding: 35px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.selection-content h1 {
+    font-size: 36px;
+
+    margin-bottom: 12px;
+}
+
+.selection-description {
+    font-size: 21px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   RESULTADOS
+   ========================= */
+
+.medicine-results {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 100%;
+}
+
+
+/* =========================
+   ITEM DO MEDICAMENTO
+   ========================= */
+
+.medicine-result {
+    width: 100%;
+
+    min-height: 95px;
+
+    padding: 18px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    text-align: left;
+
+    border: 3px solid #172126;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: #172126;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.medicine-result:hover {
+    background: #edf1f3;
+}
+
+.medicine-result:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   NOME
+   ========================= */
+
+.medicine-result-name {
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+.medicine-result-details {
+    margin-top: 5px;
+
+    font-size: 18px;
+
+    color: #59666c;
+}
+
+
+/* =========================
+   SETA
+   ========================= */
+
+.medicine-result-arrow {
+    font-size: 32px;
+
+    margin-left: 20px;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .selection-content {
+        padding: 25px 12px;
+    }
+
+    .selection-content h1 {
+        font-size: 29px;
+    }
+
+    .selection-description {
+        font-size: 18px;
+    }
+
+    .medicine-result {
+        min-height: 85px;
+
+        padding: 15px 18px;
+    }
+
+    .medicine-result-name {
+        font-size: 21px;
+    }
+
+    .medicine-result-details {
+        font-size: 16px;
+    }
+
+    .medicine-result-arrow {
+        font-size: 27px;
+    }
+}
+
+/* =========================
+   PASSO 3 - ESCOLHA DA INFORMAÇÃO
+   ========================= */
+
+.information-choice-content {
+    width: min(900px, 94vw);
+
+    margin: 0 auto;
+
+    padding: 35px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+.information-choice-content h1 {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   MEDICAMENTO SELECIONADO
+   ========================= */
+
+.selected-medicine {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    background: #edf1f3;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.information-choice-description {
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   GRID
+   ========================= */
+
+.information-choice-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    width: 100%;
+}
+
+
+/* =========================
+   BOTÕES
+   ========================= */
+
+.information-choice-button {
+    min-height: 130px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border: 3px solid #172126;
+
+    border-radius: 18px;
+
+    background: white;
+
+    color: #172126;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+.information-choice-button:hover {
+    background: #edf1f3;
+}
+
+.information-choice-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   ÍCONES
+   ========================= */
+
+.choice-icon {
+    font-size: 35px;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .information-choice-content {
+        padding: 25px 12px;
+    }
+
+    .information-choice-content h1 {
+        font-size: 29px;
+    }
+
+    .information-choice-description {
+        font-size: 18px;
+    }
+
+    .information-choice-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .information-choice-button {
+        min-height: 90px;
+
+        flex-direction: row;
+
+        font-size: 20px;
+    }
+
+    .choice-icon {
+        font-size: 28px;
+    }
+
+}
+
+/* =========================
+   NENHUM RESULTADO
+   ========================= */
+
+.no-results {
+    display: none;
+
+    width: 100%;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    border: 3px solid #172126;
+
+    border-radius: 18px;
+
+    background: white;
+}
+
+.no-results.active {
+    display: block;
+}
+
+.no-results-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #172126;
+
+    border-radius: 50%;
+
+    font-size: 35px;
+
+    font-weight: 700;
+}
+
+.no-results h2 {
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    font-size: 19px;
+
+    margin-bottom: 8px;
+}

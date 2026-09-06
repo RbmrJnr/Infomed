@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INFOMED</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         TELA INICIAL
+         ========================= -->
+
+    <main id="homeScreen" class="screen active">
+
+        <header class="header">
+            <h1>INFOMED</h1>
+            <p>Informações farmacêuticas</p>
+        </header>
+
+
+        <section class="scanner-area">
+
+            <div class="scanner-icon">
+                ▣
+            </div>
+
+            <h2>Aproxime o medicamento</h2>
+
+            <p>
+                Posicione o código de barras próximo ao leitor
+            </p>
+
+            <div class="scanner-indicator">
+                <span></span>
+                Leitor pronto
+            </div>
+
+        </section>
+
+
+        <section class="manual-area">
+
+            <p>Não consegue escanear?</p>
+
+            <button
+                id="manualSearchButton"
+                class="manual-button"
+            >
+                <span class="button-icon">⌕</span>
+                Buscar medicamento
+            </button>
+
+        </section>
+
+
+        <footer>
+            <p>
+                As informações apresentadas são baseadas na bula.
+            </p>
+
+            <p>
+                Não substitui a orientação de um profissional de saúde.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- =========================
+     BUSCA MANUAL
+     PASSO 1
+     ========================= -->
+
+    <main id="searchScreen" class="screen">
+
+    <header class="topbar">
+
+        <button
+            id="searchBackButton"
+            class="top-button"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+        <div class="topbar-title">
+            INFOMED
+        </div>
+
+        <button
+            id="searchHomeButton"
+            class="top-button"
+            aria-label="Início"
+        >
+            ⌂
+        </button>
+
+    </header>
+
+
+    <section class="search-content">
+
+        <div class="wizard-step">
+            PASSO 1 DE 3
+        </div>
+
+
+        <h1>
+            Qual medicamento você procura?
+        </h1>
+
+
+        <p class="search-description">
+            Digite o nome do medicamento abaixo.
+        </p>
+
+
+        <!-- CAMPO DE BUSCA -->
+
+        <div class="search-input-area">
+
+            <input
+                type="text"
+                id="medicineSearchInput"
+                placeholder="Digite o nome do medicamento"
+                autocomplete="off"
+            >
+
+            <button
+                id="clearSearchButton"
+                class="clear-search-button"
+                aria-label="Limpar busca"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <button
+            id="continueSearchButton"
+            class="continue-button"
+            disabled
+        >
+            CONTINUAR →
+        </button>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            As informações apresentadas são baseadas na bula.
+        </p>
+
+        <p>
+            Não substitui a orientação de um profissional de saúde.
+        </p>
+
+    </footer>
+
+    </main>
+
+    <!-- =========================
+     SELEÇÃO DO MEDICAMENTO
+     PASSO 2
+     ========================= -->
+
+    <main id="selectionScreen" class="screen">
+
+    <header class="topbar">
+
+        <button
+            id="selectionBackButton"
+            class="top-button"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+        <div class="topbar-title">
+            INFOMED
+        </div>
+
+        <button
+            id="selectionHomeButton"
+            class="top-button"
+            aria-label="Início"
+        >
+            ⌂
+        </button>
+
+    </header>
+
+
+    <section class="selection-content">
+
+        <div class="wizard-step">
+            PASSO 2 DE 3
+        </div>
+
+
+        <h1>
+            Selecione o medicamento
+        </h1>
+
+
+        <p class="selection-description">
+            Encontramos os seguintes medicamentos:
+        </p>
+
+
+        <div
+            id="medicineResults"
+            class="medicine-results"
+        >
+        </div>
+
+        <div
+        id="noResults"
+        class="no-results"
+        >
+        <div class="no-results-icon">
+            ?
+        </div>
+
+        <h2>
+            NENHUM MEDICAMENTO ENCONTRADO
+        </h2>
+
+        <p>
+            Não encontramos um medicamento com esse nome.
+        </p>
+
+        <p>
+            Tente realizar uma nova busca.
+        </p>
+
+        <button
+            id="noResultsBackButton"
+            class="back-information-button"
+        >
+            ← &nbsp; VOLTAR À BUSCA
+        </button>
+        </div>
+    </section>
+
+
+    <footer>
+
+        <p>
+            As informações apresentadas são baseadas na bula.
+        </p>
+
+        <p>
+            Não substitui a orientação de um profissional de saúde.
+        </p>
+
+    </footer>
+
+    </main>
+
+    <!-- =========================
+     ESCOLHA DA INFORMAÇÃO
+     PASSO 3
+     ========================= -->
+
+    <main id="informationChoiceScreen" class="screen">
+
+    <header class="topbar">
+
+        <button
+            id="informationChoiceBackButton"
+            class="top-button"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+        <div class="topbar-title">
+            INFOMED
+        </div>
+
+        <button
+            id="informationChoiceHomeButton"
+            class="top-button"
+            aria-label="Início"
+        >
+            ⌂
+        </button>
+
+    </header>
+
+
+    <section class="information-choice-content">
+
+        <div class="wizard-step">
+            PASSO 3 DE 3
+        </div>
+
+
+        <h1>
+            O que você deseja saber?
+        </h1>
+
+
+        <div
+            id="selectedMedicineName"
+            class="selected-medicine"
+        >
+            Medicamento selecionado
+        </div>
+
+
+        <p class="information-choice-description">
+            Selecione uma categoria de informação.
+        </p>
+
+
+        <div class="information-choice-grid">
+
+            <button
+                class="information-choice-button"
+                data-info="composicao"
+            >
+                <span class="choice-icon">▣</span>
+
+                <span>
+                    COMPOSIÇÃO
+                </span>
+            </button>
+
+
+            <button
+                class="information-choice-button"
+                data-info="como-tomar"
+            >
+                <span class="choice-icon">◷</span>
+
+                <span>
+                    COMO TOMAR
+                </span>
+            </button>
+
+
+            <button
+                class="information-choice-button"
+                data-info="contraindicacoes"
+            >
+                <span class="choice-icon">⚠</span>
+
+                <span>
+                    CONTRAINDICAÇÕES
+                </span>
+            </button>
+
+
+            <button
+                class="information-choice-button"
+                data-info="outras"
+            >
+                <span class="choice-icon">i</span>
+
+                <span>
+                    OUTRAS INFORMAÇÕES
+                </span>
+            </button>
+
+        </div>
+
+
+        <button
+            id="informationChoiceBackSearchButton"
+            class="back-information-button"
+        >
+            ← &nbsp; VOLTAR
+        </button>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            As informações apresentadas são baseadas na bula.
+        </p>
+
+        <p>
+            Não substitui a orientação de um profissional de saúde.
+        </p>
+
+    </footer>
+
+    </main>
+
+
+
+    <!-- =========================
+         TELA DO MEDICAMENTO
+         ========================= -->
+
+    <main id="medicineScreen" class="screen">
+
+        <header class="topbar">
+
+            <button
+                id="backButton"
+                class="top-button"
+                aria-label="Voltar"
+            >
+                ←
+            </button>
+
+            <div class="topbar-title">
+                INFOMED
+            </div>
+
+            <button
+                id="homeButton"
+                class="top-button"
+                aria-label="Início"
+            >
+                ⌂
+            </button>
+
+        </header>
+
+
+        <section class="medicine-content">
+
+            <div class="medicine-title">
+
+                <p class="medicine-label">
+                    MEDICAMENTO
+                </p>
+
+                <h1 id="medicineName">
+                    DIPIRONA
+                </h1>
+
+                <p id="medicineDosage">
+                    500 mg
+                </p>
+
+            </div>
+
+
+            <h2 class="question">
+                O que você deseja saber?
+            </h2>
+
+
+            <section class="information-grid">
+
+                <button
+                    class="information-button"
+                    data-info="composicao"
+                >
+                    <span class="information-icon">
+                        💊
+                    </span>
+
+                    <span>
+                        COMPOSIÇÃO
+                    </span>
+                </button>
+
+
+                <button
+                    class="information-button"
+                    data-info="como-tomar"
+                >
+                    <span class="information-icon">
+                        📋
+                    </span>
+
+                    <span>
+                        COMO TOMAR
+                    </span>
+                </button>
+
+
+                <button
+                    class="information-button"
+                    data-info="contraindicacoes"
+                >
+                    <span class="information-icon">
+                        ⚠
+                    </span>
+
+                    <span>
+                        CONTRAINDICAÇÕES
+                    </span>
+                </button>
+
+
+                <button
+                    class="information-button"
+                    data-info="outras"
+                >
+                    <span class="information-icon">
+                        🔎
+                    </span>
+
+                    <span>
+                        OUTRAS INFORMAÇÕES
+                    </span>
+                </button>
+
+            </section>
+
+
+            <button
+                id="newSearchButton"
+                class="new-search-button"
+            >
+                ↻ &nbsp; NOVA CONSULTA
+            </button>
+
+        </section>
+
+
+        <footer>
+            <p>
+                As informações apresentadas são baseadas na bula.
+            </p>
+
+            <p>
+                Não substitui a orientação de um profissional de saúde.
+            </p>
+        </footer>
+
+    </main>
+
+
+
+    <!-- =========================
+         TELA DE INFORMAÇÃO
+         ========================= -->
+
+    <main id="informationScreen" class="screen">
+
+        <header class="topbar">
+
+            <button
+                id="informationBackButton"
+                class="top-button"
+                aria-label="Voltar"
+            >
+                ←
+            </button>
+
+            <div class="topbar-title">
+                INFOMED
+            </div>
+
+            <button
+                id="informationHomeButton"
+                class="top-button"
+                aria-label="Início"
+            >
+                ⌂
+            </button>
+
+        </header>
+
+
+        <section class="information-content">
+
+            <p class="medicine-label">
+                DIPIRONA 500 mg
+            </p>
+
+            <h1 id="informationTitle">
+                COMPOSIÇÃO
+            </h1>
+
+
+            <div class="information-card">
+
+                <p id="informationText">
+                    Informações sobre a composição do medicamento
+                    serão apresentadas nesta área.
+                </p>
+
+            </div>
+
+
+            <button
+                id="backToInformationButton"
+                class="back-information-button"
+            >
+                ← &nbsp; VOLTAR ÀS INFORMAÇÕES
+            </button>
+
+        </section>
+
+
+        <footer>
+            <p>
+                As informações apresentadas são baseadas na bula.
+            </p>
+
+            <p>
+                Não substitui a orientação de um profissional de saúde.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- =========================
+     TELA DE ERRO
+     ========================= -->
+
+    <main id="errorScreen" class="screen">
+
+    <header class="topbar">
+
+        <button
+            id="errorBackButton"
+            class="top-button"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+        <div class="topbar-title">
+            INFOMED
+        </div>
+
+        <button
+            id="errorHomeButton"
+            class="top-button"
+            aria-label="Início"
+        >
+            ⌂
+        </button>
+
+    </header>
+
+
+    <section class="error-content">
+
+        <div class="error-icon">
+            ⚠
+        </div>
+
+
+        <h1>
+            MEDICAMENTO NÃO ENCONTRADO
+        </h1>
+
+
+        <p class="error-message">
+            Não encontramos informações para este
+            código de barras.
+        </p>
+
+
+        <p class="error-help">
+            Verifique o código ou escolha uma das
+            opções abaixo.
+        </p>
+
+
+        <div class="error-actions">
+
+            <button
+                id="retryButton"
+                class="error-button primary"
+            >
+                ↻ &nbsp; TENTAR NOVAMENTE
+            </button>
+
+
+            <button
+                id="errorManualSearchButton"
+                class="error-button"
+            >
+                ⌕ &nbsp; BUSCAR PELO NOME
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            As informações apresentadas são baseadas na bula.
+        </p>
+
+        <p>
+            Não substitui a orientação de um profissional de saúde.
+        </p>
+
+    </footer>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
